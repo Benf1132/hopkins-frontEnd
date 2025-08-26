@@ -59,11 +59,11 @@ body {
   font-style: normal;
 }
 
-body > .container {
+body > .container > .row {
   background-color: gray;
 }
 
-body > .container > row > h3 {
+body > .container > .row h3 {
   font-size: 1.3em;
   font-weight: bold;
   margin: 5px 0 10px;
