@@ -44,12 +44,12 @@ p {
   @media (min-width: 992px) {
     .section {
         margin: 1em 1%;
-        width: 31.3%;    
+        width: 31.3333%;    
     }
  }
    /* Tablet styles*/
-
- @media (min-width: 768px) and (max-width: 991px) {
+/* Added .98 due to tiny deadzone*/
+ @media (min-width: 768px) and (max-width: 991.98px) {
 
     .section {
         width: 48%;    
@@ -62,7 +62,8 @@ p {
     }
  }
    /* Mobile styles */
- @media (max-width: 767px) {
+/* Added .98 due to tiny deadzone*/
+ @media (max-width: 767.98px) {
     .section {
         width: 95%;
         margin: .5em 2.5%;
