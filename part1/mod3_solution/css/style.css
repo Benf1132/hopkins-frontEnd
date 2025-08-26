@@ -25,6 +25,14 @@ header > #header-nav {
   background-color: rgb(0, 191, 255);
 }
 
+#nav-list li {
+  border-bottom: 1px solid black;
+}
+
+#nav-list li:last-child {
+  border-bottom: none;
+}
+
 #nav-list a {
   color: #ff0000;
   font-size: 1.3em;
