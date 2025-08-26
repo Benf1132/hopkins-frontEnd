@@ -1,0 +1,83 @@
+/* HEADER */
+header > #header-nav {
+  background-color: #98948b;
+  border-radius: 0;
+}
+
+#header-nav > .container {
+  margin: 0;
+}
+
+.navbar-brand h1 { 
+  color: black;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 0;
+}
+
+.navbar-brand > a:hover,
+.navbar-brand > a:focus {
+  text-decoration: none;
+}
+
+#nav-list {
+  background-color: rgb(0, 191, 255);
+}
+
+#nav-list a {
+  color: #ff0000;
+  font-size: 1.3em;
+}
+
+#nav-list a:hover {
+  background: #f76c6c;
+  color: #0123ce;
+}
+
+.navbar-header button.navbar-toggle,
+.navbar-header .icon-bar {
+  border: 1px solid #61122f;
+}
+
+.navbar-header button.navbar-toggle {
+  clear: both;
+  margin-top: -40px;
+}
+
+.page-header {
+  border-bottom: none;
+  padding: 0 0 20px;
+  margin: 0;
+}
+/* END HEADER */
+
+/* BODY */
+body {
+  font-family: "Varela Round", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body > .container {
+  background-color: gray;
+}
+
+body > .container > row > h3 {
+  font-size: 1.3em;
+  font-weight: bold;
+  margin: 5px 0 10px;
+}
+
+@media (max-width: 767px) {
+  body > .container {
+    margin: auto 75px;
+  }
+}
+
+@media (min-width: 767px) {
+  body > .container {
+    width: 95%;
+    margin: auto;
+  }
+}
