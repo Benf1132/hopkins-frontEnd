@@ -23,6 +23,9 @@ var menuItemsUrl =
 var menuItemsTitleHtml = "snippets/menu-items-title.html";
 var menuItemHtml = "snippets/menu-item.html";
 
+/* === ABOUT: add the snippet URL (no deletion of existing code) === */
+var aboutHtmlUrl = "snippets/about.html";
+
 // Convenience function for inserting innerHTML for 'select'
 var insertHtml = function (selector, html) {
   var targetElem = document.querySelector(selector);
@@ -86,7 +89,7 @@ $ajaxUtils.sendGetRequest(
   buildAndShowHomeHTML, // ***** <---- TODO: STEP 1: Substitute buildAndShowHomeHTML here ******
   true); // Explicitly setting the flag to get JSON from server processed into an object literal
 });
-
+// *** finish ***
 
 
 function buildAndShowHomeHTML(categories) {
@@ -138,6 +141,48 @@ dc.loadMenuItems = function (categoryShort) {
     buildAndShowMenuItemsHTML);
 };
 
+
+/* ===============================
+   ABOUT PAGE (added, no removals)
+   =============================== */
+
+// Load the 'About' snippet and render a random 1–5 star rating
+dc.loadAbout = function () {
+  showLoading("#main-content");
+  $ajaxUtils.sendGetRequest(
+    aboutHtmlUrl,
+    function (aboutHtml) {
+      // Produce a random number 1..5 (inclusive)
+      var rating = getRandomIntInclusive(1, 5);
+
+      // Fill class1..class5 with Font Awesome v4 classes
+      // Filled star:  "fa fa-star"
+      // Empty star:   "fa fa-star-o"
+      var html = aboutHtml;
+      for (var i = 1; i <= 5; i++) {
+        var cls = (i <= rating) ? "fa fa-star" : "fa fa-star-o";
+        html = insertProperty(html, "class" + i, cls);
+      }
+
+      // (Optional bonus text next to the stars)
+      html = insertProperty(html, "ratingText", rating + "-star rating");
+
+      // Insert into page shell
+      insertHtml("#main-content", html);
+    },
+    false // treat as HTML, not JSON
+  );
+};
+
+// Helper for random integer [min, max]
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+
+/* ====== existing code continues unchanged below ====== */
 
 // Builds HTML for the categories page based on the data
 // from the server
