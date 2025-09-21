@@ -1,0 +1,43 @@
+<div class="container">
+  <h2>Sign Up</h2>
+
+  <form name="signupForm" novalidate ng-submit="sign.submit(signupForm)">
+    <div class="form-group">
+      <label>First Name</label>
+      <input name="firstName" type="text" class="form-control" ng-model="sign.model.firstName" required>
+      <div class="text-danger" ng-if="signupForm.firstName.$touched && signupForm.firstName.$error.required">First name is required.</div>
+    </div>
+
+    <div class="form-group">
+      <label>Last Name</label>
+      <input name="lastName" type="text" class="form-control" ng-model="sign.model.lastName" required>
+      <div class="text-danger" ng-if="signupForm.lastName.$touched && signupForm.lastName.$error.required">Last name is required.</div>
+    </div>
+
+    <div class="form-group">
+      <label>Email</label>
+      <input name="email" type="email" class="form-control" ng-model="sign.model.email" required>
+      <div class="text-danger" ng-if="signupForm.email.$touched && (signupForm.email.$error.required || signupForm.email.$error.email)">Enter a valid email.</div>
+    </div>
+
+    <div class="form-group">
+      <label>Phone</label>
+      <input name="phone" type="text" class="form-control" ng-model="sign.model.phone" ng-pattern="/^(\d{10}|\d{3}-\d{3}-\d{4})$/" required placeholder="5551234567 or 555-123-4567">
+      <div class="text-danger" ng-if="signupForm.phone.$touched && (signupForm.phone.$error.required || signupForm.phone.$error.pattern)">Enter a 10-digit phone number (digits or ###-###-####).</div>
+    </div>
+
+    <div class="form-group">
+      <label>Favorite menu number (e.g., L1)</label>
+      <input name="favorite" type="text" class="form-control"
+             ng-model="sign.model.favorite"
+             ng-model-options="{ updateOn: 'blur' }"
+             menu-item-exists required placeholder="e.g., L1">
+      <div class="text-danger" ng-if="signupForm.favorite.$touched && signupForm.favorite.$error.required">Favorite menu number is required.</div>
+      <div class="text-danger" ng-if="signupForm.favorite.$touched && signupForm.favorite.$error.menuItemExists">No such menu number exists.</div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" ng-disabled="signupForm.$invalid || signupForm.$pending">Submit</button>
+
+    <p class="text-success" ng-if="sign.saved" style="margin-top:1rem;">Your information has been saved.</p>
+  </form>
+</div>

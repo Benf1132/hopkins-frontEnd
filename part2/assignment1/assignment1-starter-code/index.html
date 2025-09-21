@@ -1,29 +1,44 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <title>Lunch Checker</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="styles/bootstrap.min.css">
-    <style>
-      .message { font-size: 1.3em; font-weight: bold; }
-    </style>
-  </head>
-<body>
-   <div class="container">
-     <h1>Lunch Checker</h1>
+<html lang="en" ng-app="LunchCheck">
+<head>
+  <meta charset="utf-8" />
+  <title>Lunch Checker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-         <div class="form-group">
-             <input id="lunch-menu" type="text"
+  <style>
+    .message { font-size: 1.1em; font-weight: bold; }
+    .ok  { color: green; }
+    .err { color: red; }
+    .input-ok    { border: 2px solid green !important; }
+    .input-error { border: 2px solid red !important; }
+  </style>
+</head>
+<body ng-controller="LunchCheckController">
+  <div class="container">
+    <h1>Lunch Checker</h1>
+
+    <div class="form-group">
+      <input id="lunch-menu" type="text"
              placeholder="list comma separated dishes you usually have for lunch"
-             class="form-control">
-         </div>
-         <div class="form-group">
-             <button class="btn btn-default">Check If Too Much</button>
-         </div>
-         <div class="form-group message">
-           <!-- Your message can go here. -->
-         </div>
-   </div>
+             class="form-control"
+             ng-model="items"
+             ng-class="inputClass">
+      <p>Empty items (like “, ,”) are <strong>not</strong> counted.</p>
+    </div>
 
+    <div class="form-group">
+      <button type="button" class="btn btn-default" ng-click="checkItems()">
+        Check If Too Much
+      </button>
+    </div>
+
+    <div class="form-group message">
+      <p ng-class="messageClass">{{ message }}</p>
+    </div>
+  </div>
+
+  <!-- Place scripts right before </body> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

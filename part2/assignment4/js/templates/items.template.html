@@ -1,0 +1,31 @@
+<h2>
+  Items in
+  <span ng-if="$ctrl.categoryInfo && $ctrl.categoryInfo.name">
+    {{$ctrl.categoryInfo.name}}
+  </span>
+  <span ng-if="!$ctrl.categoryInfo">
+    category "{{$ctrl.category}}"
+  </span>
+</h2>
+
+<p class="muted">
+  <a class="link" ui-sref="categories">← Back to categories</a>
+</p>
+
+<ul>
+  <li class="card" ng-repeat="item in $ctrl.items track by $index">
+    <strong>{{item.name}}</strong>
+    <div class="muted" ng-if="item.short_name">{{item.short_name}}</div>
+    <div ng-if="item.description">{{item.description}}</div>
+
+    <div class="price" ng-if="item.price_small || item.price_large">
+      <span ng-if="item.price_small">Small: {{item.price_small | currency}}</span>
+      <span ng-if="item.price_small && item.price_large"> | </span>
+      <span ng-if="item.price_large">Large: {{item.price_large | currency}}</span>
+    </div>
+  </li>
+</ul>
+
+<p class="muted" ng-if="!$ctrl.items.length">
+  No items found for this category.
+</p>

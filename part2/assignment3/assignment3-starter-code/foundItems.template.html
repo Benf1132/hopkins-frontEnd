@@ -1,0 +1,17 @@
+<ul class="list-unstyled found-list" ng-if="$ctrl.foundItems.length">
+  <li class="found-item" ng-repeat="item in $ctrl.foundItems track by $index">
+    <div class="row">
+      <div class="col-sm-9">
+        <strong>{{ item.name }}</strong>
+        <span>({{ item.short_name }})</span>
+        <div>{{ item.description }}</div>
+      </div>
+      <div class="col-sm-3 text-right">
+        <button class="btn btn-danger btn-sm"
+                ng-click="$ctrl.onRemove({ index: $index })">
+          Don’t want this one!
+        </button>
+      </div>
+    </div>
+  </li>
+</ul>
